@@ -1,0 +1,85 @@
+		Hibernate Query Language (HQL)
+	--------------------------------------
+
+Hibernate Query Language (HQL) is an object-oriented query language, similar to SQL, 
+but instead of operating on tables and columns, 
+HQL works with persistent objects and their properties
+
+HQL queries are translated by Hibernate into conventional SQL queries
+
+
+String hql = "FROM Employee";
+Query query = session.createQuery(hql);
+List results = query.list();
+
+"FROM org.hibernate.beans.Employee";
+
+"FROM Employee AS E";
+
+"FROM Employee E";
+
+"SELECT E.firstName FROM Employee E";
+
+WHERE Clause
+------------
+	"FROM Employee E WHERE E.id = 10";
+
+ORDER BY Clause
+---------------
+	"FROM Employee E WHERE E.id > 10 ORDER BY E.salary DESC";
+
+	"FROM Employee E WHERE E.id > 10 ORDER BY E.firstName DESC, E.salary DESC ";
+
+	"FROM Employee E WHERE E.id > 10 ORDER BY E.firstName DESC, E.salary DESC ";
+	
+GROUP BY Clause
+---------------
+	"SELECT SUM(E.salary), E.firtName FROM Employee E GROUP BY E.firstName";
+	
+Named Parameters
+----------------
+	String hql = "FROM Employee E WHERE E.id = :employee_id";
+	Query query = session.createQuery(hql);
+	query.setParameter("employee_id",10);
+	List results = query.list();
+
+UPDATE Clause
+-------------
+	"UPDATE Employee set salary = :salary WHERE id = :employee_id";
+	Query query = session.createQuery(hql);
+	query.setParameter("salary", 1000);
+	query.setParameter("employee_id", 10);
+	int result = query.executeUpdate();
+
+DELETE Clause
+-------------
+	"DELETE FROM Employee WHERE id = :employee_id";
+	Query query = session.createQuery(hql);
+	query.setParameter("employee_id", 10);
+	int result = query.executeUpdate();
+
+
+INSERT Clause
+-------------
+HQL supports INSERT INTO clause only where 
+records can be inserted from one object to another object.
+
+	"INSERT INTO Employee(firstName, lastName, salary) 
+	 SELECT firstName, lastName, salary FROM old_employee";
+
+
+Aggregate Methods
+-----------------
+	"SELECT count(distinct E.firstName) FROM Employee E";
+
+	avg(property-name), max(property-name), min(property-name), sum(property-name)
+	
+	
+Pagination
+----------
+	String hql = "FROM Employee";
+	Query query = session.createQuery(hql);
+	query.setFirstResult(1);
+	query.setMaxResults(10);
+	List results = query.list();
+

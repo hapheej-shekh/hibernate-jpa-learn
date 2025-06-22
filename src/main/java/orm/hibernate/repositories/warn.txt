@@ -1,0 +1,1 @@
+Enable JPA Configuration inorder to work with Repositories

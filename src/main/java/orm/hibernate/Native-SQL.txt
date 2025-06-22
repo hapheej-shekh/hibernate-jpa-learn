@@ -1,0 +1,79 @@
+		Native SQL
+	-----------------
+
+
+Hibernate 3.x allows you to specify handwritten SQL, including stored procedures, 
+for all create, update, delete, and load operations
+
+
+Scalar Query
+------------
+Native Scalar Query is used when we write raw SQL and fetch specific columns (scalar values) 
+— not entire entities.
+
+This is useful for performance.
+
+String sql = "SELECT name, salary FROM employee WHERE salary > :minSalary";
+SQLQuery query = session.createSQLQuery(sql);
+query.setParameter("minSalary", 10000.0)
+List results = query.list();
+
+
+Entity Queries
+--------------
+Entity Queries (HQL or JPQL) are object-oriented queries that work with your entity classes, 
+not database tables
+
+String sql = "SELECT * FROM EMPLOYEE";
+SQLQuery query = session.createSQLQuery(sql);
+query.addEntity(Employee.class);
+List results = query.list();
+
+
+Named SQL Queries
+-----------------
+Named SQL Queries are predefined native SQL queries declared using annotations or XML.
+They are typically placed at the entity class level and can be reused throughout the application.
+
+String sql = "SELECT * FROM EMPLOYEE WHERE id = :employee_id";
+SQLQuery query = session.createSQLQuery(sql);
+query.addEntity(Employee.class);
+query.setParameter("employee_id", 10);
+List results = query.list();
+
+
+@Entity
+@NamedNativeQuery(
+    name = "Student.findByNameNative",
+    query = "SELECT * FROM student WHERE name = :name",
+    resultClass = Student.class
+)
+public class Student {
+    @Id
+    private Integer id;
+    private String name;
+}
+
+
+Query query = session.createNamedQuery("Student.findByNameNative");
+query.setParameter("name", "Arham Shekh");
+
+List<Student> students = query.getResultList();
+
+------------------------
+
+@Entity
+@NamedQuery(
+    name = "Student.findByName",
+    query = "FROM Student s WHERE s.name = :name"
+)
+public class Student {
+    @Id
+    private Integer id;
+    private String name;
+}
+
+Query query = session.createNamedQuery("Student.findByName");
+query.setParameter("name", "Arham Shekh");
+
+List<Student> students = query.getResultList();
