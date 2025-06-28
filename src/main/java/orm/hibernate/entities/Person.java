@@ -33,7 +33,7 @@ public class Person {
 	@Transient					//Don't persist
 	private String wifeName;
 	private LocalDate date;
-	//@Temporal(TemporalType.TIME)	//Don't persist
+	//@Temporal(TemporalType.TIMESTAMP)	//Don't persist
 	private LocalTime time;
 	@Lob
 	private String description;

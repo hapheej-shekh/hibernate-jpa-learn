@@ -21,7 +21,7 @@ import orm.hibernate.util.ObjectMapper;
 
 @RestController
 @RequestMapping("/api/students")
-public class StudentApi {
+public class StudentMappingApi {
 
 	@Autowired
 	private StudentService studentService;

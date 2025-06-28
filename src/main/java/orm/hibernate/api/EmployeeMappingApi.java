@@ -19,7 +19,7 @@ import orm.hibernate.services.EmployeeService;
 
 @RestController
 @RequestMapping("/api/employees")
-public class EmployeeApi {
+public class EmployeeMappingApi {
 
 	@Autowired
 	private EmployeeService empService;

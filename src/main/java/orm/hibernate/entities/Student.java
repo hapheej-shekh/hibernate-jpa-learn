@@ -33,6 +33,7 @@ public class Student {
 	
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval=true)
     @JoinColumn(name = "address_id")  // FK in Student table
+	//@Valid // required for nested object validation
 	private StudentAddress address;
 	
 	//CascadeType.ALL-> saves referenced objects as well, but don't delete, since not owned user

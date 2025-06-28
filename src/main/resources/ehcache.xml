@@ -1,0 +1,16 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd">
+
+    <defaultCache
+            maxEntriesLocalHeap="1000"
+            eternal="false"
+            timeToIdleSeconds="120"
+            timeToLiveSeconds="300"
+            memoryStoreEvictionPolicy="LRU" />
+
+    <cache name="orm.hibernate.entities.HQLEntity"
+           maxEntriesLocalHeap="1000"
+           timeToLiveSeconds="1800"
+           eternal="false"
+           memoryStoreEvictionPolicy="LRU" />
+</ehcache>

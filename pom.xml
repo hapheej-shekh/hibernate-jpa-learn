@@ -31,8 +31,7 @@
 		<dependency>
 		    <groupId>org.hibernate</groupId>
 		    <artifactId>hibernate-entitymanager</artifactId>
-		    <version>6.0.0.Alpha7</version>
-		</dependency>
+		    </dependency>
 		<dependency>
 		    <groupId>com.h2database</groupId>
 		    <artifactId>h2</artifactId>
@@ -41,7 +40,13 @@
 		<dependency>
 		    <groupId>org.projectlombok</groupId>
 		    <artifactId>lombok</artifactId>
-		    <version>1.18.38</version>
+		</dependency>
+		
+		<!-- Hibernate Ehcache Integration (works with EhCache 2.x only) -->
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-ehcache</artifactId>
+		    <version>5.6.15.Final</version>
 		</dependency>
 		
 	</dependencies>

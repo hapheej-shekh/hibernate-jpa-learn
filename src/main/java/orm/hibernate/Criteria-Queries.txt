@@ -109,3 +109,14 @@ cr.setProjection(Projections.min("salary"));
 // To get sum of a property.
 cr.setProjection(Projections.sum("salary"));
 
+-------------------------
+
+| Feature        | API                                               |
+| -------------- | ------------------------------------------------- |
+| `Restrictions` | `cb.gt()`, `cb.equal()`, `cb.and()`               |
+| `Ordering`     | `cb.asc()`, `cb.desc()`                           |
+| `Projection`   | `cq.multiselect()`                                |
+| `Aggregation`  | `cb.sum()`, `cb.avg()`, `cb.max()`                |
+| `Group By`     | `cq.groupBy()`                                    |
+| `Having`       | `cq.having()`                                     |
+| `Pagination`   | `query.setFirstResult()`, `query.setMaxResults()` |
